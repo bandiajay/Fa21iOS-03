@@ -91,6 +91,7 @@
                     </view>
                     <connections>
                         <outlet property="ImageDisplay" destination="xBL-LM-Lp2" id="nVe-vA-FVP"/>
+                        <outlet property="NextButtonOutlet" destination="lf9-Gw-Pkz" id="K1b-Ym-5tB"/>
                         <outlet property="PrevButton" destination="XpW-oT-g62" id="Oef-ky-gjq"/>
                         <outlet property="crsNum" destination="NwW-0o-Zpr" id="inu-AJ-XAE"/>
                         <outlet property="crsSem" destination="WHz-8k-eoJ" id="MQy-qs-t5Y"/>

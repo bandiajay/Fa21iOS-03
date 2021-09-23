@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var NextButtonOutlet: UIButton!
     @IBOutlet weak var PrevButton: UIButton!
     
     @IBOutlet weak var ImageDisplay: UIImageView!
@@ -19,37 +20,57 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var crsTitle: UILabel!
     
+    var imageNumber = 0
     
     @IBOutlet weak var crsSem: UILabel!
     
-    var courses  = [["44555", "Network Security", "fall"],
-                    ["44643", "Mobile Edge Computing", "spring"],
-                    ["44443", "Data Streaming", "summer"]]
+    var courses  = [["img01","44555", "Network Security", "fall"],
+        ["img02","44643", "Mobile Edge Computing", "spring"],
+        ["img03", "44443", "Data Streaming", "summer"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         //details of the first course (0 index) including image.
-        crsNum.text = courses[0][0]
-        crsTitle.text = courses[0][1]
-        crsSem.text = courses[0][2]
+        updateData(imageNumber)
         
         //previous button should be disabled.
         PrevButton.isEnabled = false
     }
 
     @IBAction func PreviousButtonClicked(_ sender: UIButton) {
+        NextButtonOutlet.isEnabled = true
         //go back to the previous data point in the array
-        //when user visited all the elements, previous button should be disabled.
+        imageNumber -= 1
+        updateData(imageNumber)
         
+        //when user visited all the elements, previous button should be disabled.
+        if imageNumber == 0{
+            PrevButton.isEnabled = false
+        }
     }
     
     
 
     @IBAction func NextButtonClicked(_ sender: UIButton) {
-        //the data must be updated to th next element
+        
+        PrevButton.isEnabled = true
+        //the data must be updated to the next element
+        imageNumber += 1
+        updateData(imageNumber)
         //if the user reach the last element, next button must be disabled.
+        if imageNumber == courses.count-1{
+            NextButtonOutlet.isEnabled = false
+            
+        }
+    }
+    
+    func updateData(_ imgNumber:Int){
+        ImageDisplay.image = UIImage(named:courses[imgNumber][0])
+        crsNum.text = courses[imgNumber][1]
+        crsTitle.text = courses[imgNumber][2]
+        crsSem.text = courses[imgNumber][3]
     }
     
 }
