@@ -59,7 +59,17 @@ class ViewController: UIViewController {
         
         let imageFrame = CGRect(x: x, y: y, width: w, height: h)
         
-        ImageOutletView.frame = imageFrame
+        //ImageOutletView.frame = imageFrame
+        
+//        UIView.animate(withDuration: 1, delay: 3, animations: {
+//            self.ImageOutletView.frame = imageFrame
+//            self.ImageOutletView.alpha = 1
+//        })
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 50,  animations: {
+            self.ImageOutletView.frame = imageFrame
+        })
+        
     }
     
 }
